@@ -16,6 +16,16 @@ const getAllPlates = async () => {
   }
 };
 
+const getPlateById = async (id) => {
+  try {
+    const plate = await db.collection(collections.plates).doc(id).get();
+    return { ...plate.data(), id: plate.id };
+  } catch (error) {
+    throw error;
+  }
+};
+
 module.exports = {
   getAllPlates,
+  getPlateById,
 };
